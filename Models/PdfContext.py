@@ -40,7 +40,7 @@ context=""
 for i in range(len(docs)):
     if i<5:
         context += docs[i].page_content
-print(context)
+        print(i,")",context)
 
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
@@ -51,12 +51,12 @@ llm  =  OpenAI(temperature=0.7)
 # Prompt 
 output1 = PromptTemplate(
     input_variables= ["context"],
-    template = "With provided context {context} design a 3 weeks Data Science technical training program for a Data Scientist"
+    template = "With provided {context} design a 3 weeks Data Science technical training program for a Data Scientist with week wise plan breakups. Show it in bullet points."
     )
 
 output2 = PromptTemplate(
     input_variables=["Training"],
-    template = "for the {Training}, what are 5 best and chepest sources available that provides structure courses which covers all the topics "
+    template = "for the {Training}, what are 5 best and cheapest sources available that provides structure courses which covers all the topics "
     )
 
 # Chain 
@@ -65,5 +65,7 @@ chain2 = LLMChain(llm=llm, prompt=output2, verbose=True)
 
 final_out = SimpleSequentialChain(chains=[chain1,chain2], verbose=True)
 print(final_out.run(context))
+
+
 
 
