@@ -1,0 +1,5 @@
+{
+    "python.pythonPath" : "C:\\Users\\kunda\\anaconda3\\envs\\llm\\Scripts",
+    "python.terminal.activateEnvironment": true,
+    "editor.foldingMaximumRegions": 80
+}
