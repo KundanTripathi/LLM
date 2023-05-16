@@ -40,7 +40,7 @@ context=""
 for i in range(len(docs)):
     if i<5:
         context += docs[i].page_content
-        print(i,")",context)
+print("Context --",")",context)
 
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
@@ -60,7 +60,7 @@ output2 = PromptTemplate(
     )
 
 # Chain 
-chain1 = LLMChain(llm=llm, prompt=output1,output_key="Hotels",verbose=True)
+chain1 = LLMChain(llm=llm, prompt=output1,output_key="Training",verbose=True)
 chain2 = LLMChain(llm=llm, prompt=output2, verbose=True)
 
 final_out = SimpleSequentialChain(chains=[chain1,chain2], verbose=True)
